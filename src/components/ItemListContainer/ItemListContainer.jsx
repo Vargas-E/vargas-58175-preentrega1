@@ -13,7 +13,7 @@ const tempItems = [
   { name: "Frapuccino", price: "450" },
   { name: "Irish coffee", price: "700" },
   { name: "Coffee sandwich (?)", price: "600" },
-  { name: "Surprise Coffee", price: "1000" },
+  { name: "Surprise Coffee!!!!", price: "1000" },
 ];
 
 /* eslint-disable react/prop-types */
