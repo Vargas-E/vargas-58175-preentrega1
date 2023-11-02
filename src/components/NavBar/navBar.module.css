@@ -1,0 +1,26 @@
+.navBar {
+    display: flex;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.logo {
+    max-width: 200px;
+    flex-grow: 0.05;
+    display: flex;
+    align-items: center;
+    background-color: #d2b48c;
+    object-fit: scale-down;
+}
+
+.menuItemsContainer {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    justify-content: end;
+}
+
+.menuItem {
+    height: 50%
+}

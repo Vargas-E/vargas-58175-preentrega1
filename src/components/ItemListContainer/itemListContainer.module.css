@@ -1,0 +1,20 @@
+.itemListContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap: 1.5rem;
+}
+
+.greetingStyle {
+    display: flex;
+    margin: 2rem auto 2rem auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.productsPage {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+
+}
