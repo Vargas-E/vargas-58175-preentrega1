@@ -1,23 +1,37 @@
 /* eslint-disable react/prop-types */
+import { useParams } from "react-router-dom";
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
+import { useEffect, useState } from "react";
+import { productsStyle } from "./products.module.css";
+import Loading from "../components/Loading/Loading";
 
 /* En el componente products es donde irian otras cosas aparte del container de los productos, por ahora solo tiene el ItemListContainer*/
-const Products = ({ counter, setCounter }) => {
-  const greeting =
-    "Hi this is a placeholer message for the ItemListContainer react component! Click on the counter to add or substract quantity. Press add to cart to change cartCounter! Colors on the card are randomized!";
+const Products = (props) => {
+  const params = useParams();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    if (params?.id) {
+      fetch("https://dummyjson.com/products/category/" + params.id)
+        .then((res) => res.json())
+        .then((json) => setProducts(json.products));
+    } else {
+      fetch("https://dummyjson.com/products?limit=100")
+        .then((res) => res.json())
+        .then((json) => setProducts(json.products));
+    }
+  }, [params.id]);
+
+  if (!products) {
+    return <Loading />;
+  }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className={productsStyle}>
       <ItemListContainer
-        greeting={greeting}
-        counter={counter}
-        setCounter={setCounter}
+        products={products}
+        setCounter={props.setCounter}
+        counter={props.counter}
       />
     </div>
   );

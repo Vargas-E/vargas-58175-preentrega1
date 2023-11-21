@@ -6,12 +6,18 @@ import {
   counterButtonsContainer,
   counterStyle,
   buttonStyle,
+  itemImage,
 } from "./item.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Item = ({ itemName, itemPrice, cartCounter, setCartCounter }) => {
+const Item = ({ item, setCartCounter, cartCounter }) => {
   const [counter, setCounter] = useState(1);
-  const [randomColor, setRandomColor] = useState("#" +  Math.floor(Math.random() * 16777215).toString(16));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setCounter(1);
+  }, [item]);
 
   const handleCounter = (action) => {
     if (action == "down" && counter >= 1) {
@@ -32,17 +38,12 @@ const Item = ({ itemName, itemPrice, cartCounter, setCartCounter }) => {
   return (
     <div className={itemStyle}>
       <Box
-        style={{
-          borderRadius: "10px 10px 0 0",
-          height: "300px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: randomColor,
-        }}
-      >
-        {itemName}
-      </Box>
+        className={itemImage}
+        component="img"
+        src={item.thumbnail}
+        alt="item"
+      />
+
       <Box className={counterButtonsContainer}>
         <Button className={buttonStyle} onClick={() => handleCounter("down")}>
           {"<"}
@@ -53,9 +54,27 @@ const Item = ({ itemName, itemPrice, cartCounter, setCartCounter }) => {
         </Button>
       </Box>
       <Box className={itemNameStyle}>
-        <div>{itemName}</div>
-        <div>${itemPrice}</div>
+        <div>{item.title}</div>
+        <div>${item.price}</div>
       </Box>
+      <Button
+        onClick={() => {
+          navigate("/item/" + item.id);
+        }}
+        sx={{
+          backgroundColor: "#1e1e1e",
+          color: "white",
+          height: "50px",
+          margin: "0px",
+          "&:hover": {
+            backgroundColor: "#330f50",
+          },
+          marginBottom: "0.5rem",
+        }}
+        fullWidth
+      >
+        Product details
+      </Button>
       <Button
         onClick={() => handleAddToCart()}
         sx={{
@@ -65,7 +84,7 @@ const Item = ({ itemName, itemPrice, cartCounter, setCartCounter }) => {
           height: "50px",
           margin: "0px",
           "&:hover": {
-            backgroundColor: "rgb(46, 20, 20)",
+            backgroundColor: "#330f50",
           },
         }}
         fullWidth

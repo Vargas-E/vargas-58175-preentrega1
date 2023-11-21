@@ -7,7 +7,7 @@
     cursor: pointer;
     height: 100;
     width: 100;
-    background-color: #d2b48c;
+    background-color: #FEA82F;
     color: #1e1e1e;
     padding-top: 1.2rem;
     margin-right: 2rem;
@@ -15,7 +15,7 @@
 }
 
 .cartIconContainer:hover {
-    background-color: #80140e;
+    background-color: #330f50;
     color: white;
 }
 

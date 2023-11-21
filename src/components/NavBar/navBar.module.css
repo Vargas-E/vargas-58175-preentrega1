@@ -5,12 +5,13 @@
 }
 
 .logo {
-    max-width: 200px;
+    max-width: 270px;
     flex-grow: 0.05;
     display: flex;
     align-items: center;
-    background-color: #d2b48c;
+    background-color: #FEA82F;
     object-fit: scale-down;
+    padding: 0.5rem;
 }
 
 .menuItemsContainer {
@@ -23,4 +24,33 @@
 
 .menuItem {
     height: 50%
+}
+
+.listStyle {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.itemList {
+    text-decoration: none;
+    color: #FEA82F;
+}
+
+.activeItemList {
+    text-decoration: none;
+    color: white;
+}
+
+.secondRowNavBar {
+    list-style: none;
+    display: flex;
+    overflow-x: scroll;
+    margin: 0;
+    padding: 0;
+}
+
+.chipsContainer {
+    padding: 0.8rem;
+    margin: 0.5rem 0;
 }

@@ -3,6 +3,8 @@
     border-radius: 10px;
     margin: 1rem 0 1rem 0;
     transition: all 0.5s ease-in-out;
+    background-color: #FEA82F;
+    color: #1e1e1e;
 
 }
 
@@ -16,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #d2b48c;
+    background-color: #FEA82F;
     height: 70px;
     font-weight: bold;
 }
@@ -61,4 +63,14 @@
 
 .buttonStyle {
     width: 30%;
+}
+
+.itemImage {
+    border-radius: 10px 10px 0 0;
+    height: 300px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
 }
