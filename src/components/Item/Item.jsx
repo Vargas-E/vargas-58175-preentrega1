@@ -59,7 +59,7 @@ const Item = ({ item, setCartCounter, cartCounter }) => {
       </Box>
       <Button
         onClick={() => {
-          navigate("/item/" + item.id);
+          navigate("/vargas-ivan-58175-react/item/" + item.id);
         }}
         sx={{
           backgroundColor: "#1e1e1e",

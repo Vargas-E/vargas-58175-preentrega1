@@ -108,7 +108,7 @@ const ItemDetails = ({ counter, setCounter }) => {
           }}
           fullWidth
           variant="contained"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/vargas-ivan-58175-react")}
         >
           Return to products
         </Button>

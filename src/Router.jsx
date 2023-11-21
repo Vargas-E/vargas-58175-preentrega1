@@ -13,19 +13,19 @@ const Router = (props) => {
         <NavBar counter={props.counter} />
         <Routes>
           <Route
-            path="/"
+            path="/vargas-ivan-58175-react"
             element={
               <Products setCounter={props.setCounter} counter={props.counter} />
             }
           />
           <Route
-            path="/category/:id"
+            path="/vargas-ivan-58175-react/category/:id"
             element={
               <Products setCounter={props.setCounter} counter={props.counter} />
             }
           />
           <Route
-            path="/item/:id"
+            path="/vargas-ivan-58175-react/item/:id"
             element={
               <ItemDetails
                 setCounter={props.setCounter}
@@ -33,8 +33,8 @@ const Router = (props) => {
               />
             }
           />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/vargas-ivan-58175-react/contact" element={<Contact />} />
+          <Route path="/vargas-ivan-58175-react/about-us" element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -28,7 +28,7 @@ const NavBar = (props) => {
   return (
     <>
       <div className={navBar}>
-        <NavLink to={"/"}>
+        <NavLink to={"/vargas-ivan-58175-react"}>
           <Box
             className={logo}
             component="img"
@@ -45,7 +45,7 @@ const NavBar = (props) => {
                 className={(navData) =>
                   navData.isActive ? itemList : activeItemList
                 }
-                to={"/about-us"}
+                to={"/vargas-ivan-58175-react/about-us"}
                 onClick={() => setCategory(null)}
               >
                 About Us
@@ -56,7 +56,7 @@ const NavBar = (props) => {
                 className={(navData) =>
                   navData.isActive ? itemList : activeItemList
                 }
-                to={"/contact"}
+                to={"/vargas-ivan-58175-react/contact"}
                 onClick={() => setCategory(null)}
               >
                 Contact
@@ -78,7 +78,7 @@ const NavBar = (props) => {
               className={chipsContainer}
               style={{ padding: "0.5rem" }}
             >
-              <NavLink to={"/category/" + e}>
+              <NavLink to={"/vargas-ivan-58175-react/category/" + e}>
                 <Chip
                   style={{
                     color: category == e ? "#1e1e1e" : "#FEA82F",
