@@ -5,7 +5,7 @@ import {
 import Item from "../Item/Item";
 
 /* eslint-disable react/prop-types */
-const ItemListContainer = ({ products, setCounter, counter }) => {
+const ItemListContainer = ({ products}) => {
   return (
     <div className={productsPage}>
       <div className={itemListContainer}>
@@ -13,8 +13,6 @@ const ItemListContainer = ({ products, setCounter, counter }) => {
           <Item
             key={i}
             item={e}
-            cartCounter={counter}
-            setCartCounter={setCounter}
           />
         ))}
       </div>

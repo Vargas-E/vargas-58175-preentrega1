@@ -1,14 +1,20 @@
 /* eslint-disable react/prop-types */
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import {cartIconContainer, cartIconCounter} from "./cartIcon.module.css";
+import { cartIconContainer, cartIconCounter } from "./cartIcon.module.css";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cartContext";
 
-const CartIcon = ({counter}) => {
+const CartIcon = () => {
+  const { cartList } = useContext(CartContext);
+
+  const counterHandler = () => {
+    return cartList?.cart.reduce((acc, e) => acc + e.quantity, 0) || 0;
+  };
+
   return (
-    <div
-      className={cartIconContainer}
-    >
+    <div className={cartIconContainer}>
       <ShoppingCartIcon />
-      <div className={cartIconCounter}>{counter}</div>
+      <div className={cartIconCounter}>{counterHandler()}</div>
     </div>
   );
 };

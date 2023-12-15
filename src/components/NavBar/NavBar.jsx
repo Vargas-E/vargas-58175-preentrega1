@@ -11,19 +11,37 @@ import {
   secondRowNavBar,
   chipsContainer,
   activeItemList,
+  logout,
 } from "./navBar.module.css";
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../contexts/userContext";
+import { getCategories } from "../../firebase/firebase";
+import Loading from "../Loading/Loading";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState(null);
+  const { logoutUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products/categories")
-      .then((res) => res.json())
-      .then((json) => setCategories(json));
+    awaitCategories();
   }, []);
+
+  const awaitCategories = async () => {
+    setCategories(await getCategories())
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/vargas-ivan-58175-react/login");
+  };
+
+  if (!categories) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -62,17 +80,22 @@ const NavBar = (props) => {
                 Contact
               </NavLink>
             </li>
+            <div className={logout} onClick={() => handleLogout()}>
+              Logout
+            </div>
           </ol>
         </Box>
         <Box>
-          <CartIcon counter={props.counter} />
+          <NavLink to={"/vargas-ivan-58175-react/cart_page"}>
+            <CartIcon />
+          </NavLink>
         </Box>
       </div>
       <div
         style={{ borderTop: "3px solid #FEA82F", backgroundColor: "#1e1e1e" }}
       >
         <ul className={secondRowNavBar}>
-          {categories.map((e, i) => (
+          {categories?.map((e, i) => (
             <li
               key={i}
               className={chipsContainer}

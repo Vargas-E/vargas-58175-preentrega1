@@ -8,11 +8,13 @@ import {
   buttonStyle,
   itemImage,
 } from "./item.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../contexts/cartContext";
 
-const Item = ({ item, setCartCounter, cartCounter }) => {
+const Item = ({ item }) => {
   const [counter, setCounter] = useState(1);
+  const {addItemToCart} = useContext(CartContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,8 +32,9 @@ const Item = ({ item, setCartCounter, cartCounter }) => {
 
   const handleAddToCart = () => {
     if (counter > 0) {
-      setCartCounter(counter + cartCounter);
+      // setCartCounter(counter + cartCounter);
       setCounter(1);
+      addItemToCart({...item, quantity: counter});
     }
   };
 
@@ -40,7 +43,7 @@ const Item = ({ item, setCartCounter, cartCounter }) => {
       <Box
         className={itemImage}
         component="img"
-        src={item.thumbnail}
+        src={item.imageUrls[0]}
         alt="item"
       />
 

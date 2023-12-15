@@ -1,12 +1,16 @@
-import { useState } from "react";
 import Router from "./Router";
+import UserContextProvider from "./contexts/userContext";
+import CartContextProvider from "./contexts/cartContext";
 
 function App() {
-  const [counter, setCounter] = useState(0);
-
+  
   return (
     <>
-      <Router counter={counter} setCounter={setCounter} />
+      <UserContextProvider>
+        <CartContextProvider>
+          <Router />
+        </CartContextProvider>
+      </UserContextProvider>
     </>
   );
 }

@@ -1,0 +1,14 @@
+.purchaseFinishedContainer {
+    display: flex;
+    flex-direction: Column;
+    gap: 1rem;
+    justify-content: space-between;
+    width: 60vw;
+    margin: auto;
+    background-color: #FEA82F;
+    border-radius: 10px;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    color: #1e1e1e;
+}
