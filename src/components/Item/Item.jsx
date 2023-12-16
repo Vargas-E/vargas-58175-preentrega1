@@ -32,7 +32,6 @@ const Item = ({ item }) => {
 
   const handleAddToCart = () => {
     if (counter > 0) {
-      // setCartCounter(counter + cartCounter);
       setCounter(1);
       addItemToCart({...item, quantity: counter});
     }

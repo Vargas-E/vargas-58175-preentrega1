@@ -80,17 +80,3 @@ const History = () => {
 };
 
 export default History;
-
-// {
-//   history.map((e, i) => (
-//     <>
-//       <div style={{ backgrounColor: "red" }} onClick={() => handleCollapse(i)}>
-//         abrime!
-//       </div>
-//       <Collapse in={collapses[i] == true}>
-//         {" "}
-//         <div key={i}>{e.id}</div>
-//       </Collapse>
-//     </>
-//   ));
-// }

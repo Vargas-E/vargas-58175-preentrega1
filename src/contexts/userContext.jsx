@@ -67,6 +67,7 @@ const UserContextProvider = ({ children }) => {
     const res = await getDocs(q);
     if (res.size > 0) {
       setSnackbarError("Username already exists");
+      setLoading(false);
       return false;
     }
     if (password1 == password2) {
