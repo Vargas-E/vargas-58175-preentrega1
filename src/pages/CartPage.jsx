@@ -9,7 +9,7 @@ import Loading from "../components/Loading/Loading";
 import { purchaseFinishedContainer } from "./cartPage.module.css";
 
 const CartPage = () => {
-  const { cartList, finishPurchase, cleanCart, loading } =
+  const { cartList, finishPurchase, loading } =
     useContext(CartContext);
   const { user } = useContext(UserContext);
   const [openDialog, setOpenDialog] = useState(false);
@@ -107,22 +107,6 @@ const CartPage = () => {
             marginRight: "1rem",
           }}
         >
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#1e1e1e",
-              color: "white",
-              margin: "0px",
-              "&:hover": {
-                backgroundColor: "#330f50",
-              },
-              marginBottom: "0.5rem",
-            }}
-            disabled={cartList.cart.length == 0}
-            onClick={() => cleanCart()}
-          >
-            Erase cart
-          </Button>
           <Button
             variant="contained"
             sx={{
