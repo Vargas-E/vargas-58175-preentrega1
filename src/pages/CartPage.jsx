@@ -20,6 +20,16 @@ const CartPage = () => {
     return <Loading />;
   }
 
+
+  if (cartList.cart.length == 0) {
+    return (
+      <div className={purchaseFinishedContainer}>
+        <h3>Your Cart is empty!</h3>
+      </div>
+    );
+  }
+
+
   const id = cartList.id;
 
   const handleFinish = async () => {

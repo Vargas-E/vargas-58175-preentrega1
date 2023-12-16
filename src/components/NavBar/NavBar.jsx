@@ -108,7 +108,13 @@ const NavBar = () => {
           </ol>
         </Box>
         <Box>
-          <NavLink to={"/vargas-ivan-58175-react/cart_page"}>
+          <NavLink
+            className={(navData) =>
+              navData.isActive ? itemList : activeItemList
+            }
+            to={"/vargas-ivan-58175-react/cart_page"}
+            onClick={() => setCategory(null)}
+          >
             <CartIcon />
           </NavLink>
         </Box>
@@ -123,7 +129,12 @@ const NavBar = () => {
               className={chipsContainer}
               style={{ padding: "0.5rem" }}
             >
-              <NavLink to={"/vargas-ivan-58175-react/category/" + e}>
+              <NavLink
+                className={(navData) =>
+                  navData.isActive ? itemList : activeItemList
+                }
+                to={"/vargas-ivan-58175-react/category/" + e}
+              >
                 <Chip
                   style={{
                     color: category == e ? "#1e1e1e" : "#FEA82F",
