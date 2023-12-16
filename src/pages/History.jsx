@@ -59,7 +59,7 @@ const History = () => {
   return (
     <div>
       {history.map((e, i) => (
-        <>
+        <div key={e.id}>
           <div className={historyContainer} onClick={() => handleCollapse(i)}>
             <h3>{`Cart ID: ${e.id} | Date: ${handleDate(e.initTs)} | Total: $${
               e.total
@@ -73,7 +73,7 @@ const History = () => {
               </div>
             ))}
           </Collapse>
-        </>
+        </div>
       ))}
     </div>
   );
