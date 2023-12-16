@@ -1,12 +1,11 @@
-# Preentrega 2 React-coderhouse
+# Entrega final React-coderhouse
 
-Segunda preentrega. Se conservaron las paginas con placeholder de about us y contact. Se agrego una segunda parte del navBar para las categorias.
-
-NOTA: se utiliza la api de https://dummyjson.com/. Por lo que veo, a veces con repetidas requests, puede fallar la request sobre las imagenes. Me queda ver porque, ya que el objeto con la url llega bien. Asumo que debe ser por una limitacion del acceso al servidor que tiene las imagenes.
+En esta entrega se agrego login y register de usuarios con firebase database. No representa la seguridad de un login real con auth de firebase. Como check de registro tiene que usuarios no esten iguales
+La base de datos esta en firebase con las collections: users,carts, products, categories.
+Las imagenes estan subidas a firebase storage.
+Se conserva el cart con un flag, persistente entre logins. 
+La "sesion" de usuario se fija si pasaron más de 24hs para pedir login de nuevo.
+Se agrego un historial con las compras anteriores del usuario logeado.
 
 NOTA: Se puso como base en el vite.config el nombre del repositorio. Esto fue para poder levantar github-pages. El funcionamiento deberia ser el mismo.
-
-Ahora la pagina principal es la de Products, que contiene el ItemListContainer.
-
-La funcionalidad de counter del Cart se sigue utilizando, pero solo aumenta el counter. No agrega productos al carrito.
 
