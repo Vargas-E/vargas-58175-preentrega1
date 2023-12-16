@@ -56,3 +56,20 @@ export const getCategories = async () => {
   const data = await getDoc(docRef);
   return data.data().categories;
 };
+
+export const getHistoryFromFirebase = async (userId) => {
+  const cartsCollection = collection(db, "carts");
+  let que = query(
+    cartsCollection,
+    where("userId", "==", userId),
+    where("currentCart", "==", false)
+  );
+  const res = await getDocs(que);
+  if (res.size > 0) {
+    const historyFromFirebase = res.docs.map((e) => ({
+      ...e.data(),
+      id: e.id,
+    }));
+    return historyFromFirebase;
+  }
+};

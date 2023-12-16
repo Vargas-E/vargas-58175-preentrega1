@@ -9,7 +9,8 @@ import Loading from "../components/Loading/Loading";
 import { purchaseFinishedContainer } from "./cartPage.module.css";
 
 const CartPage = () => {
-  const { cartList, finishPurchase, cleanCart, loading } = useContext(CartContext);
+  const { cartList, finishPurchase, cleanCart, loading } =
+    useContext(CartContext);
   const { user } = useContext(UserContext);
   const [openDialog, setOpenDialog] = useState(false);
   const [purchaseFinished, setPurchaseFinished] = useState(false);
@@ -35,7 +36,9 @@ const CartPage = () => {
       <div className={purchaseFinishedContainer}>
         <h2>Purchase finished! ID: {id}</h2>
         <h3>
-          {"We'll send you the details of your purchase by mail (not really...)"}
+          {
+            "We'll send you the details of your purchase by mail (not really...)"
+          }
         </h3>
 
         <Button
@@ -59,7 +62,11 @@ const CartPage = () => {
 
   return (
     <div>
-      <UserDataDialog open={openDialog} onClose={() => setOpenDialog(false)} />
+      <UserDataDialog
+        open={openDialog}
+        setPurchaseFinished={() => setPurchaseFinished(true)}
+        onClose={() => setOpenDialog(false)}
+      />
       {cartList.cart.map((e, i) => (
         <CartItem key={i} cartItem={e} />
       ))}

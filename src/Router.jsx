@@ -11,6 +11,7 @@ import { UserContext } from "./contexts/userContext";
 import { Register } from "./pages/Register";
 import CartPage from "./pages/CartPage";
 import { Alert, Snackbar } from "@mui/material";
+import History from "./pages/History";
 
 const Router = () => {
   const { user, snackbarError, setSnackbarError } = useContext(UserContext);
@@ -73,6 +74,10 @@ const Router = () => {
           <Route
             path="/vargas-ivan-58175-react/cart_page"
             element={user ? <CartPage /> : <Login />}
+          />
+                    <Route
+            path="/vargas-ivan-58175-react/history"
+            element={user ? <History /> : <Login />}
           />
         </Routes>
       </BrowserRouter>

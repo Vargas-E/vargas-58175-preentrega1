@@ -48,7 +48,7 @@ const UserContextProvider = ({ children }) => {
             userId: userFromFirebase.id,
           })
         );
-        setUser({ ...userFromFirebase.user, userId: userFromFirebase.id });
+        setUser({ ...userFromFirebase, userId: userFromFirebase.id });
       } else {
         setLoading(false);
         setSnackbarError("Incorrect username or password");
@@ -67,32 +67,34 @@ const UserContextProvider = ({ children }) => {
     const res = await getDocs(q);
     if (res.size > 0) {
       setSnackbarError("Username already exists");
-      return;
+      return false;
     }
     if (password1 == password2) {
       const userToSend = { user, password: password1 };
       try {
-        const res = addDoc(usersCollection, userToSend);
+        const res = await addDoc(usersCollection, userToSend);
         window.localStorage.setItem(
           "user",
           JSON.stringify({
             user: user,
             loginTs: new Date(),
-            userId: res,
+            userId: res.id,
           })
         );
-        setUser({ user, userId: res });
+        setUser({ user, userId: res.id });
         setLoading(false);
+        return true
       } catch (err) {
         setLoading(false);
         setSnackbarError(
           "Error while attempting to register. Please try again later."
         );
+        return false;
       }
     } else {
       setLoading(false);
-
       setSnackbarError("Password verification doesn't match");
+      return false;
     }
   };
 
@@ -139,6 +141,7 @@ const UserContextProvider = ({ children }) => {
     if (Object.keys(validateData)?.length == 0) {
       try {
         await updateDoc(doc(db, "users", user.userId), { ...data });
+        setUser({...user, ...data})
         return true;
       } catch (err) {
         setSnackbarError("Error while updating user data. Please try again");

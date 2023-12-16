@@ -128,7 +128,7 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
-  const cleanCart = () => {
+  const cleanCart = (logout) => {
     const newCart = {
       currentCart: true,
       cart: [],
@@ -137,7 +137,9 @@ const CartContextProvider = ({ children }) => {
       userId: user.userId,
     };
     setCartList(newCart);
-    updateCart(newCart);
+    if (!logout) {
+      updateCart(newCart);
+    }
   };
 
   return (

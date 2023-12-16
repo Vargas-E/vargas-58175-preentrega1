@@ -1,0 +1,29 @@
+.historyContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 56vw;
+    margin: auto;
+    background-color: #FEA82F;
+    border-radius: 10px;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 0rem;
+    color: #1e1e1e;
+    cursor: pointer;
+}
+
+.noHistoryMessage {
+    display: flex;
+    justify-content: center;
+    width: 56vw;
+    margin: auto;
+    background-color: #FEA82F;
+    border-radius: 10px;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 0rem;
+    color: #1e1e1e;
+}

@@ -10,11 +10,10 @@ import {
   TextField,
 } from "@mui/material";
 import { CartContext } from "../../contexts/cartContext";
-import { useNavigate } from "react-router-dom";
 
-const UserDataDialog = ({ open, onClose }) => {
+const UserDataDialog = ({ open, onClose, setPurchaseFinished }) => {
   const { updateUser } = useContext(UserContext);
-  const { finishPurchase } = useContext(CartContext);
+  const {finishPurchase} = useContext(CartContext);
   const [newUserData, setNewUserData] = useState({
     firstName: "",
     lastName: "",
@@ -28,7 +27,6 @@ const UserDataDialog = ({ open, onClose }) => {
     email: null,
   });
 
-  const navigate = useNavigate();
 
   const handleChange = (value, id) => {
     setNewUserData({ ...newUserData, [id]: value });
@@ -38,8 +36,8 @@ const UserDataDialog = ({ open, onClose }) => {
     const res = await updateUser(newUserData);
     if (res == true) {
       await finishPurchase();
+      setPurchaseFinished()
       onClose();
-      navigate("/vargas-ivan-58175-react/");
     } else {
       setErrors(res);
     }

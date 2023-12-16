@@ -4,14 +4,26 @@ import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { pageContainer, formContainer } from "./register.module.css";
 import EcommerceLogo from "../assets/images/ecommerce.png";
+import Loading from "../components/Loading/Loading";
 
 export const Register = () => {
   const [mail, setMail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-  const { registerUser } = useContext(UserContext);
+  const { registerUser, loading } = useContext(UserContext);
 
   const navigate = useNavigate();
+
+  const handleRegister = async () => {
+    const res = await registerUser(mail, password1, password2);
+    if (res) {
+      navigate("/vargas-ivan-58175-react/");
+    }
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className={pageContainer}>
@@ -46,7 +58,7 @@ export const Register = () => {
         />
         <Button
           variant="contained"
-          onClick={() => registerUser(mail, password1, password2)}
+          onClick={() => handleRegister()}
           sx={{
             backgroundColor: "#1e1e1e",
             color: "white",

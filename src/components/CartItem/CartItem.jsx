@@ -10,8 +10,9 @@ import {
   text,
   iconContainer,
 } from "./cartItem.module.css";
-const CartItem = ({ cartItem }) => {
+const CartItem = ({ cartItem, history }) => {
   const { deleteItemInCart } = useContext(CartContext);
+
 
   return (
     <div className={cartItemContainer}>
@@ -35,12 +36,14 @@ const CartItem = ({ cartItem }) => {
           </p>
           <h3>{"Total: $" + cartItem.quantity * cartItem.price}</h3>
         </div>
-        <div className={iconContainer}>
-          <DeleteIcon
-            style={{ cursor: "pointer" }}
-            onClick={() => deleteItemInCart(cartItem)}
-          />
-        </div>
+        {history != true && (
+          <div className={iconContainer}>
+            <DeleteIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => deleteItemInCart(cartItem)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

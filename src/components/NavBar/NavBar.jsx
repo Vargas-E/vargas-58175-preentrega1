@@ -12,17 +12,20 @@ import {
   chipsContainer,
   activeItemList,
   logout,
+  saluteContainer,
 } from "./navBar.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { getCategories } from "../../firebase/firebase";
 import Loading from "../Loading/Loading";
+import { CartContext } from "../../contexts/cartContext";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState(null);
-  const { logoutUser } = useContext(UserContext);
+  const { logoutUser, user } = useContext(UserContext);
+  const { cleanCart } = useContext(CartContext);
 
   const navigate = useNavigate();
 
@@ -31,11 +34,12 @@ const NavBar = () => {
   }, []);
 
   const awaitCategories = async () => {
-    setCategories(await getCategories())
+    setCategories(await getCategories());
   };
 
   const handleLogout = () => {
     logoutUser();
+    cleanCart(true);
     navigate("/vargas-ivan-58175-react/login");
   };
 
@@ -55,6 +59,13 @@ const NavBar = () => {
             onClick={() => setCategory(null)}
           />
         </NavLink>
+        {user.firstName && (
+          <Box className={saluteContainer}>
+            <h4>
+              Hi {user.firstName}! We hope you are having a wonderful day!
+            </h4>
+          </Box>
+        )}
 
         <Box className={menuItemsContainer}>
           <ol className={listStyle}>
@@ -78,6 +89,17 @@ const NavBar = () => {
                 onClick={() => setCategory(null)}
               >
                 Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={(navData) =>
+                  navData.isActive ? itemList : activeItemList
+                }
+                to={"/vargas-ivan-58175-react/history"}
+                onClick={() => setCategory(null)}
+              >
+                History
               </NavLink>
             </li>
             <div className={logout} onClick={() => handleLogout()}>
